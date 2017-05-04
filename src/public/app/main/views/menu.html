@@ -1,0 +1,29 @@
+<div class="container">
+    <div class="row">
+        <div class="col-sm-4">
+            <a class="btn btn-danger btn-lg" href="#/results"><i class="glyphicon glyphicon-star"></i> Poll Results</a>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-4" ng-if="role===1"  >
+                <a class="btn btn-primary btn-lg" ng-disabled="isOpen()" href="#/" ng-click="newPool()"><i class="glyphicon glyphicon-plus"></i> Create Pool</a>
+        </div>
+        <div class="col-sm-8">
+            <h2>Pools</h2>
+            <div class="table-responsive">
+                <table class="table table-bordered table-striped">
+                    <thead>
+                        <th>Pool #</th>
+                        <th>Status</th>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="pool in pools" ng-click="getPool(pool)">
+                            <td>{{pool.id}}</td>
+                            <td>{{pool.pool_status}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

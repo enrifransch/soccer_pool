@@ -1,0 +1,41 @@
+<form class="form-horizontal" role="form" ng-submit="submitMatch()">
+  <div class="modal-header">
+    <h3 class="modal-title">Add Match</h3>
+  </div>
+  <div class="modal-body">
+  <div class="form-group">
+    <label class="col-sm-3 control-label">Team</label>
+    <div class="col-sm-5">
+        <h4>Team 1 - Home</h4>
+      <select class="form-control" ng-model="form.homeId">
+        <option  ng-repeat="team in teams" title="{{team.name}}" value="{{team.id}}" ng-selected="{{team.id == form.homeId}}">{{team.name}}</option>
+      </select>
+    </div>
+  </div>
+  <div class="form-group">
+    <label class="col-sm-3 control-label">Score</label>
+    <div class="col-sm-5">
+		<input class="form-control" type="text" ng-model="form.homeScore" >
+    </div>
+  </div>
+  <div class="form-group">  
+    <label class="col-sm-3 control-label">Team</label>
+    <div class="col-sm-5">
+        <h4>Team 2 - Away</h4>
+      <select class="form-control" ng-model="form.awayId">
+        <option ng-repeat="team in teams" title="{{team.name}}" value="{{team.id}}" ng-selected="{{team.id == form.awayId}}">{{team.name}}</option>
+      </select>
+    </div>
+  </div>
+  <div class="form-group">
+    <label class="col-sm-3 control-label">Score</label>
+    <div class="col-sm-5">
+		<input class="form-control" type="text" ng-model="form.awayScore" >
+    </div>
+  </div>
+  </div>
+  <div class="modal-footer">
+       <button class="btn btn-default" type="button" ng-click="cancel()">Cancel</button>
+       <button class="btn btn-primary" type="submit">Done</button>
+  </div>
+</form>

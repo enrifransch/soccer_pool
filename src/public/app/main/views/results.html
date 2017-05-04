@@ -1,0 +1,20 @@
+<div class="container">
+    <div class="row">
+        <div class="col-sm-8">
+            <div class="table-responsive">
+                <table class="table table-bordered table-striped">
+                    <thead>
+                        <th>User</th>
+                        <th ng-repeat="pool in pools">P{{pool.id}}</th>
+                        <th>Total</th>
+                    </thead>
+                    <tbody ng-repeat="user in users">
+                        <tr>
+                            <th>{{user.username}}</th>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

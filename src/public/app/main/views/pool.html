@@ -1,0 +1,98 @@
+<div class="container" ng-controller="poolController">
+    <div class="row">
+        <div class="col-sm-2" ng-if="pool.pool_status===1 && role===1">
+                <a class="btn btn-primary  btn-block" ng-click="addMatch()"><i class="glyphicon glyphicon-plus"></i> New Match</a>
+                <a class="btn btn-warning  btn-block" ng-click="setScore()"><i class="glyphicon glyphicon-pencil"></i> Set Score</a>
+                <a class="btn btn-success  btn-block" ng-click="closePool()"><i class="glyphicon glyphicon-ok"></i> Close Pool</a>
+        </div>
+        <div class="col-sm-2" ng-if="pool.pool_status===1 && role===0">
+            <a class="btn btn-warning  btn-block" ng-click="setPick()"><i class="glyphicon glyphicon-pencil"></i> Enter picks</a>
+        </div>
+        <div class="col-sm-10" ng-if="!editing && role===1">
+            <h2>Pool #{{pool.id}}</h2>
+            <div class="table-responsive">
+                <table class="table table-bordered table-striped">
+                    <thead>
+                        <th>Home Team</th>
+                        <th>Away Team</th>
+                        <th>Winner</th>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="pool_match in pool_matches">
+                            <td>{{pool_match.home}}</td>
+                            <td>{{pool_match.away}}</td>
+                            <td>{{getWinner(pool_match)}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="col-sm-10" ng-if="editing && role===1">
+            <h2>Pool #{{pool.id}}</h2>
+            <div class="table-responsive">
+                <table class="table table-bordered table-striped">
+                    <thead>
+                        <th>Home Team</th>
+                        <th>Score</th>
+                        <th>Away Team</th>
+                        <th>Score</th>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="pool_match in pool_matches">
+                            <td>{{pool_match.home}}</td>                           
+                            <td><input type="text" ng-model="pool_match.home_score"/></td>
+                            <td>{{pool_match.away}}</td>
+                            <td><input type="text" ng-model="pool_match.away_score"/></td>
+                        </tr>
+                    </tbody>
+                </table>
+                <button class="btn btn-primary" ng-click="updateTable(pool_matches)">Done</button>
+            </div>
+        </div>
+        <div class="col-sm-10" ng-if="!editing && role===0">
+            <h2>Pool #{{pool.id}}</h2>
+            <div class="table-responsive">
+                <table class="table table-bordered table-striped">
+                    <thead>
+                        <th>Home Team</th>
+                        <th>Away Team</th>
+                        <th>Your Pick</th>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="pool_match in pool_matches">
+                            <td>{{pool_match.home}}</td>
+                            <td>{{pool_match.away}}</td>
+                            <td>{{getPick(pool_match,getUserMatch(pool_match.id))}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="col-sm-10" ng-if="editing && role===0">
+            <h2>Pool #{{pool.id}}</h2>
+            <div class="table-responsive">
+                <table class="table table-bordered table-striped">
+                    <thead>
+                        <th>Home Team</th>
+                        <th>Away Team</th>
+                        <th>Enter Pick</th>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="pool_match in pool_matches">
+                            <td>{{pool_match.home}}</td>
+                            <td>{{pool_match.away}}</td>
+                            <td>
+                                <select class="form-control" ng-model="pool_match.user_prediction">
+                                    <option ng-selected="{{0 == pool_match.user_prediction}}" value="0">TIE</option>
+                                    <option ng-selected="{{1 == pool_match.user_prediction}}" value="1">{{pool_match.home}}</option>
+                                    <option ng-selected="{{2 == pool_match.user_prediction}}" value="2">{{pool_match.away}}</option>
+                                </select>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <button class="btn btn-primary" ng-click="updatePredictions(pool_matches)">Done</button>
+            </div>
+        </div>
+    </div>
+</div>
