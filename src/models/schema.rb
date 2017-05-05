@@ -98,13 +98,13 @@ user_matches << { user_id: 1,  pool_match: 5, prediction: 1 }
 user_matches << { user_id: 1,  pool_match: 6, prediction: 0 }
 user_matches << { user_id: 1,  pool_match: 7, prediction: 2 }
 
-user_matches << { user_id: 2,  pool_match: 1, prediction: 1 }
-user_matches << { user_id: 2,  pool_match: 2, prediction: 2 }
-user_matches << { user_id: 2,  pool_match: 3, prediction: 2 }
-user_matches << { user_id: 2,  pool_match: 4, prediction: 0 }
-user_matches << { user_id: 2,  pool_match: 5, prediction: 0 }
-user_matches << { user_id: 2,  pool_match: 6, prediction: 1 }
-user_matches << { user_id: 2,  pool_match: 7, prediction: 2 }
+user_matches << { user_id: 4,  pool_match: 1, prediction: 1 }
+user_matches << { user_id: 4,  pool_match: 2, prediction: 2 }
+user_matches << { user_id: 4,  pool_match: 3, prediction: 2 }
+user_matches << { user_id: 4,  pool_match: 4, prediction: 0 }
+user_matches << { user_id: 4,  pool_match: 5, prediction: 0 }
+user_matches << { user_id: 4,  pool_match: 6, prediction: 1 }
+user_matches << { user_id: 4,  pool_match: 7, prediction: 2 }
 
 user_matches << { user_id: 3,  pool_match: 1, prediction: 1 }
 user_matches << { user_id: 3,  pool_match: 2, prediction: 2 }

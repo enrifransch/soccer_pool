@@ -78,13 +78,27 @@ get '/user_matches/:id' do
     query.to_a.to_json
 end
 
+get '/results' do
+    query = DB[%Q{select users.id, prediction, pool_id, pool_match, match_id, home_score, away_score
+                    from users 
+                    inner join user_matches on users.id = user_matches.user_id
+                    inner join pool_matches on pool_matches.id = user_matches.pool_match
+                    inner join pools on pools.id = pool_matches.pool_id
+                    inner join matches on pool_matches.match_id = matches.id
+                    inner join teams as away on matches.team_away = away.id
+                    inner join teams as home on matches.team_home = home.id
+                    where users.role = 0 and pools.pool_status = 0 }]
+    content_type :json
+    query.to_a.to_json
+end
+
 get '/*' do
     puts valid_user
     if (valid_user) then
         File.read("public/app/main/index.html")
-   else
+    else
        File.read("public/app/login/login.html")
-   end
+    end
 end
 
 post '/new/user' do

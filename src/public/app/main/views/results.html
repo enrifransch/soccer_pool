@@ -5,12 +5,14 @@
                 <table class="table table-bordered table-striped">
                     <thead>
                         <th>User</th>
-                        <th ng-repeat="pool in pools">P{{pool.id}}</th>
+                        <th ng-repeat="match in match_score">P{{match.match}}</th>
                         <th>Total</th>
                     </thead>
-                    <tbody ng-repeat="user in users">
-                        <tr>
-                            <th>{{user.username}}</th>
+                    <tbody>
+                        <tr ng-repeat="user in tableValues">
+                           <td>{{user.username}}</td>
+                           <td ng-repeat="p in user.scores track by $index">{{p}}</td>
+                           <td>{{user.total}}</td>
                         </tr>
                     </tbody>
                 </table>

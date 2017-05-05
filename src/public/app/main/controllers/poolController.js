@@ -1,3 +1,5 @@
+'use strict';
+
 angular.module('soccerApp')
     .controller('poolController', ['$scope', '$rootScope', '$http', '$routeParams', '$location', '$window', '$uibModal',
     function($scope, $rootScope, $http, $routeParams, $location, $window, $uibModal){
